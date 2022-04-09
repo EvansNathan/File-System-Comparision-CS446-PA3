@@ -19,18 +19,17 @@ def create_single_directory(num_files):
         i = i + 1
     end = time.time()
 
-    print(str(i) + " files created in " + single_root_path)
+    print("Number of files: " + str(i))
 
     return end - begin
 
 
-def create_hierarchical_directory():
+def create_hierarchical_directory(num_files, num_directories):
     hierarchical_root_path = "/home/hierarchicalRoot/"
     x = 0
     y_start = 0
     y_end = 9
     i = 0
-    num_directories = 10
 
     os.mkdir(hierarchical_root_path)
     while x < num_directories:
@@ -49,7 +48,7 @@ def create_hierarchical_directory():
         y_start = y_start + 10
         y_end = y_end + 10
 
-    print(str(num_directories) + " directories created in " + hierarchical_root_path + " with 10 files each")
+    print("Number of Files: " + str(num_files + num_directories))
 
 
 def single_root_traverse():
@@ -98,20 +97,23 @@ def hierarchical_root_traverse():
         num_directories = num_directories - 1
 
     end = time.time()
-    print("Average File Size: " + str(directory_size / num_files))
+    print("Average File Size: " + str(directory_size / num_files + num_directories))
     return end - begin
 
 
 def main():
     num_files = 100
+    num_directories = 10
 
+    print("Single Level File System")
     create_single_directory(num_files)
     single_execution_time = single_root_traverse()
-    print "Single Root Traversal Time: " + str(single_execution_time) + " seconds" + "\n"
+    print "Traversal Time: " + str(single_execution_time) + " seconds" + "\n"
 
-    create_hierarchical_directory()
+    print("Hierarchical File System")
+    create_hierarchical_directory(num_files, num_directories)
     hierarchical_execution_time = hierarchical_root_traverse()
-    print "Hierarchical Root Traversal Time: " + str(hierarchical_execution_time) + " seconds" + "\n"
+    print "Traversal Time: " + str(hierarchical_execution_time) + " seconds" + "\n"
 
 
 if __name__ == "__main__":
