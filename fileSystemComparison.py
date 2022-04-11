@@ -14,7 +14,7 @@ import os
 
 def create_single_directory(num_files):
     i = 0
-    single_root_path = "/home/singleRoot/"
+    single_root_path = os.path.expanduser('~') + "/singleRoot/"
 
     begin = time.time()
     os.mkdir(single_root_path)
@@ -31,7 +31,7 @@ def create_single_directory(num_files):
 
 
 def create_hierarchical_directory(num_files, num_directories):
-    hierarchical_root_path = "/home/hierarchicalRoot/"
+    hierarchical_root_path = os.path.expanduser('~') + "/hierarchicalRoot/"
     x = 0
     y_start = 0
     y_end = 9
@@ -64,12 +64,12 @@ def single_root_traverse():
     file_name = ""
     directory_size = 0
 
-    file_single_root = open("/home/singleRoot/singleLevelFiles.txt", "w")
+    file_single_root = open((os.path.expanduser('~') + "/singleRoot/singleLevelFiles.txt"), "w")
 
     begin = time.time()
     while index < num_files:
         file_name = "file" + str(index) + ".txt"
-        directory_size = directory_size + os.path.getsize("/home/singleRoot/" + file_name)
+        directory_size = directory_size + os.path.getsize(os.path.expanduser('~') + "/singleRoot/" + file_name)
         file_single_root.write("/home/singleRoot/" + file_name + "," + str(directory_size) + "\n")
         index = index + 1
 
@@ -85,7 +85,7 @@ def hierarchical_root_traverse():
     index = 0
     directory_size = 0
 
-    file_hierarchical_root = open("/home/hierarchicalRoot/hierarchicalFiles.txt", "w")
+    file_hierarchical_root = open((os.path.expanduser('~') + "/hierarchicalRoot/hierarchicalFiles.txt"), "w")
 
     begin = time.time()
     while num_directories > 0:
@@ -94,7 +94,7 @@ def hierarchical_root_traverse():
             file_name = "file" + str(index) + ".txt"
             index = index + 1
             num_files = num_files - 1
-            directory_size = directory_size + os.path.getsize("/home/hierarchicalRoot/"
+            directory_size = directory_size + os.path.getsize(os.path.expanduser('~') + "/hierarchicalRoot/"
                                                               + directory_name + file_name)
             file_hierarchical_root.write("/home/hierarchicalRoot/" + directory_name + file_name
                                          + "," + str(directory_size) + "\n")
