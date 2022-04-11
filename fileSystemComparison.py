@@ -2,6 +2,12 @@
 # Date: 28 March 2022
 # Purpose: Compare and contrast single level file directories with hierarchical file directories.
 
+# Hierarchical and Single root directories take the same amount of space (as shown below)
+# The differences begin with security. A single root file system does not allow different users to
+# secure their oen file in a hierarchical structure files can be contained per user and links can be
+# made to share files from a visual perspective it is easier to navigate an organized file system like
+# a hierarchical but if all files were in one directory it can be hard to search with GUIs
+
 import time
 import os
 
